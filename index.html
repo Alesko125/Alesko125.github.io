@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="uk" data-lang="ua" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Олексій Кобзар — Backend &amp; Android Developer</title>
+<meta name="description" content="Резюме Олексія Кобзаря: Kotlin/Android та Python/FastAPI розробник із Чернігова. Автор Fleet MDM — self-hosted платформи керування Android-пристроями.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#9881;</text></svg>">
+<style>
+:root{
+  --bg:#0b0f14; --panel:#111820; --panel-2:#0e141b; --line:#1e2a36;
+  --text:#e6edf3; --muted:#8b9aa9; --accent:#57d0ff; --accent-2:#7ee787;
+  --chip:#16202b; --shadow:0 1px 0 rgba(255,255,255,.03), 0 8px 24px rgba(0,0,0,.35);
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+html[data-theme="light"]{
+  --bg:#f7f9fb; --panel:#ffffff; --panel-2:#f1f5f9; --line:#dce3ea;
+  --text:#11181f; --muted:#5a6b7b; --accent:#0b6fa4; --accent-2:#1a7f37;
+  --chip:#eef3f8; --shadow:0 1px 2px rgba(16,24,40,.06), 0 8px 20px rgba(16,24,40,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--text); font-family:var(--sans);
+  font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+[data-lang="ua"] .en,[data-lang="en"] .ua{display:none}
+.ua,.en{display:contents}
+a{color:var(--accent); text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:900px; margin:0 auto; padding:0 20px 72px}
+
+/* ---------- toolbar ---------- */
+.toolbar{
+  position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--line);
+}
+.toolbar .wrap{padding:10px 20px; display:flex; gap:8px; align-items:center; justify-content:flex-end}
+.btn{
+  font:inherit; font-size:13px; color:var(--text); background:var(--chip);
+  border:1px solid var(--line); border-radius:8px; padding:6px 11px; cursor:pointer;
+  display:inline-flex; align-items:center; gap:6px; transition:border-color .15s, color .15s;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent)}
+.seg{display:inline-flex; background:var(--chip); border:1px solid var(--line); border-radius:8px; overflow:hidden}
+.seg button{
+  font:inherit; font-size:13px; padding:6px 11px; background:transparent; color:var(--muted);
+  border:0; cursor:pointer; font-family:var(--mono);
+}
+.seg button[aria-pressed="true"]{background:var(--accent); color:var(--bg); font-weight:600}
+
+/* ---------- hero ---------- */
+header.hero{padding:48px 0 28px; border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono); font-size:12.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-2); margin:0 0 12px}
+h1{font-size:clamp(30px,5vw,44px); line-height:1.15; margin:0 0 6px; letter-spacing:-.02em}
+.role{font-size:clamp(17px,2.4vw,21px); color:var(--muted); margin:0 0 20px; font-weight:400}
+.meta{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 22px; padding:0; list-style:none}
+.meta li{
+  font-size:13px; color:var(--muted); background:var(--chip); border:1px solid var(--line);
+  border-radius:999px; padding:4px 12px;
+}
+.contacts{display:flex; flex-wrap:wrap; gap:10px; margin:0; padding:0; list-style:none}
+.contacts a{
+  display:inline-flex; align-items:center; gap:8px; font-size:14px; font-family:var(--mono);
+  background:var(--panel); border:1px solid var(--line); border-radius:9px; padding:8px 13px;
+  color:var(--text); box-shadow:var(--shadow);
+}
+.contacts a:hover{border-color:var(--accent); color:var(--accent); text-decoration:none}
+.contacts svg{width:15px; height:15px; flex:none; fill:currentColor; opacity:.75}
+
+/* ---------- sections ---------- */
+section{padding:38px 0; border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+h2{
+  font-size:13px; font-family:var(--mono); letter-spacing:.16em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 20px; font-weight:600;
+}
+h2::before{content:"// "; color:var(--accent-2)}
+.lead{font-size:17px; margin:0 0 14px; max-width:70ch}
+.lead:last-child{margin-bottom:0}
+
+/* ---------- skills ---------- */
+.skillrow{display:grid; grid-template-columns:150px 1fr; gap:16px; padding:14px 0; border-top:1px dashed var(--line)}
+.skillrow:first-of-type{border-top:0; padding-top:0}
+.skillrow h3{margin:0; font-size:14px; font-weight:600; color:var(--text)}
+.skillrow h3 small{display:block; font-weight:400; color:var(--muted); font-size:12px; margin-top:3px}
+.chips{display:flex; flex-wrap:wrap; gap:7px; margin:0; padding:0; list-style:none}
+.chips li{
+  font-family:var(--mono); font-size:12.5px; padding:4px 10px; border-radius:7px;
+  background:var(--chip); border:1px solid var(--line); color:var(--text);
+}
+.chips.solid li{border-color:color-mix(in srgb, var(--accent) 45%, var(--line)); color:var(--accent)}
+
+/* ---------- project ---------- */
+.project{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; box-shadow:var(--shadow)}
+.project-head{display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; justify-content:space-between; margin-bottom:6px}
+.project h3{margin:0; font-size:21px; letter-spacing:-.01em}
+.project h3 a{color:var(--text)}
+.project h3 a:hover{color:var(--accent)}
+.tagline{color:var(--muted); margin:0 0 16px; font-size:15px}
+.ghstats{display:flex; flex-wrap:wrap; gap:14px; margin:0 0 18px; padding:12px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-family:var(--mono); font-size:12.5px; color:var(--muted)}
+.ghstats b{color:var(--text); font-weight:600}
+.ghstats[hidden]{display:none}
+.feat{margin:0 0 16px; padding:0; list-style:none; display:grid; gap:9px}
+.feat li{padding-left:20px; position:relative; font-size:14.5px}
+.feat li::before{content:"▸"; position:absolute; left:2px; color:var(--accent-2)}
+.stack{display:flex; flex-wrap:wrap; gap:6px; margin:0; padding:0; list-style:none}
+.stack li{font-family:var(--mono); font-size:12px; color:var(--muted); background:var(--panel-2); border:1px solid var(--line); border-radius:6px; padding:3px 8px}
+
+/* ---------- timeline ---------- */
+.job{display:grid; grid-template-columns:170px 1fr; gap:18px; padding:18px 0; border-top:1px solid var(--line)}
+.job:first-of-type{border-top:0; padding-top:0}
+.when{font-family:var(--mono); font-size:12.5px; color:var(--muted); padding-top:3px}
+.job h3{margin:0 0 3px; font-size:16.5px}
+.where{color:var(--muted); font-size:14px; margin:0 0 10px}
+.job ul{margin:0; padding-left:18px; display:grid; gap:6px}
+.job li{font-size:14.5px}
+.sub{margin-top:12px; padding-top:12px; border-top:1px dashed var(--line)}
+.sub h4{margin:0 0 2px; font-size:14.5px; font-weight:600}
+
+/* ---------- two column ---------- */
+.cols{display:grid; grid-template-columns:1fr 1fr; gap:32px}
+.plain{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+.plain li{font-size:14.5px}
+.plain b{font-weight:600}
+.plain span.m{color:var(--muted)}
+
+footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--mono); text-align:center}
+
+@media (max-width:680px){
+  .skillrow,.job{grid-template-columns:1fr; gap:8px}
+  .cols{grid-template-columns:1fr; gap:26px}
+  header.hero{padding-top:32px}
+}
+
+/* ---------- print ---------- */
+@media print{
+  :root{
+    --bg:#fff; --panel:#fff; --panel-2:#fff; --line:#cbd5e0; --text:#000;
+    --muted:#444; --accent:#0b4f75; --accent-2:#1a6b2f; --chip:#fff; --shadow:none;
+  }
+  body{font-size:10.5pt; line-height:1.42}
+  .toolbar,.noprint{display:none !important}
+  .wrap{max-width:none; padding:0}
+  header.hero{padding:0 0 12px}
+  h1{font-size:22pt}
+  .role{font-size:12pt; margin-bottom:10px}
+  section{padding:14px 0; break-inside:avoid}
+  .project,.job,.skillrow{break-inside:avoid}
+  .project{border:1px solid var(--line); padding:12px}
+  .contacts a{border:0; padding:0; box-shadow:none; margin-right:14px}
+  .ghstats{display:none !important}
+  a{color:#000}
+  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:8pt; color:#555; word-break:break-all}
+  .contacts a[href^="http"]::after,.project h3 a::after{content:""}
+}
+</style>
+</head>
+<body>
+
+<div class="toolbar noprint">
+  <div class="wrap">
+    <div class="seg" role="group" aria-label="Language / Мова">
+      <button type="button" data-set-lang="ua" aria-pressed="true">UA</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button class="btn" type="button" id="theme-btn" aria-label="Theme">
+      <span id="theme-icon">☾</span><span class="ua">Тема</span><span class="en">Theme</span>
+    </button>
+    <button class="btn" type="button" onclick="window.print()">
+      <span>⎙</span><span class="ua">PDF</span><span class="en">PDF</span>
+    </button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow"><span class="ua">Резюме</span><span class="en">Résumé</span></p>
+  <h1><span class="ua">Олексій Кобзар</span><span class="en">Oleksii Kobzar</span></h1>
+  <p class="role">Backend &amp; Android Developer</p>
+  <ul class="meta">
+    <li><span class="ua">Чернігів, Україна</span><span class="en">Chernihiv, Ukraine</span></li>
+    <li><span class="ua">Віддалено</span><span class="en">Remote</span></li>
+    <li><span class="ua">Повна зайнятість</span><span class="en">Full-time</span></li>
+  </ul>
+  <ul class="contacts">
+    <li><a href="mailto:bezlim4@gmail.com">
+      <svg viewBox="0 0 16 16"><path d="M1.5 3h13A1.5 1.5 0 0 1 16 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5v-7A1.5 1.5 0 0 1 1.5 3Zm.2 1.2 6.3 4.2 6.3-4.2H1.7Z"/></svg>
+      bezlim4@gmail.com</a></li>
+    <li><a href="https://github.com/Alesko125" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.34c-2.23.48-2.7-1.07-2.7-1.07-.36-.93-.89-1.18-.89-1.18-.73-.5.05-.49.05-.49.8.06 1.23.83 1.23.83.72 1.23 1.88.87 2.34.67.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      github.com/Alesko125</a></li>
+    <li><a href="https://www.linkedin.com/in/oleksii-kobzar-4a9547248" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16"><path d="M13.6 0H2.4A2.4 2.4 0 0 0 0 2.4v11.2A2.4 2.4 0 0 0 2.4 16h11.2a2.4 2.4 0 0 0 2.4-2.4V2.4A2.4 2.4 0 0 0 13.6 0ZM4.9 13.4H2.6V6h2.3v7.4Zm-1.15-8.4a1.34 1.34 0 1 1 0-2.68 1.34 1.34 0 0 1 0 2.68ZM13.4 13.4h-2.3V9.8c0-.86-.02-1.97-1.2-1.97-1.2 0-1.39.94-1.39 1.9v3.67H6.2V6h2.21v1.01h.03c.31-.58 1.06-1.2 2.18-1.2 2.33 0 2.76 1.53 2.76 3.53v4.06Z"/></svg>
+      LinkedIn</a></li>
+  </ul>
+</header>
+
+<section id="about">
+  <h2><span class="ua">Про себе</span><span class="en">About</span></h2>
+  <p class="lead">
+    <span class="ua">Розробник із Чернігова. Сім років працюю з мережами та технічною підтримкою в телеком-компанії «Основа» — щодня маю справу з реальним залізом, збоями та людьми, які не володіють технічною мовою. Паралельно пишу код: від Kotlin-агента під Android до асинхронного бекенду на FastAPI.</span>
+    <span class="en">Developer based in Chernihiv, Ukraine. Seven years of hands-on work with networks and technical support at the telecom company Osnova — real hardware, real outages, and users who do not speak the technical language. Alongside that I write code: from a Kotlin agent for Android to an async FastAPI backend.</span>
+  </p>
+  <p class="lead">
+    <span class="ua">Найкраще мене показує <a href="https://github.com/Alesko125/fleet-mdm" target="_blank" rel="noopener">Fleet&nbsp;MDM</a> — self-hosted платформа керування Android-пристроями, яку я спроєктував і реалізував повністю сам: бекенд, вебпанель, мобільний агент, інфраструктура та документація. Шукаю віддалену повну зайнятість у backend- або Android-розробці.</span>
+    <span class="en">The work that represents me best is <a href="https://github.com/Alesko125/fleet-mdm" target="_blank" rel="noopener">Fleet&nbsp;MDM</a> — a self-hosted Android device management platform I designed and built end to end: backend, web dashboard, mobile agent, infrastructure and documentation. Looking for a remote full-time backend or Android role.</span>
+  </p>
+</section>
+
+<section id="skills">
+  <h2><span class="ua">Навички</span><span class="en">Skills</span></h2>
+
+  <div class="skillrow">
+    <h3><span class="ua">Впевнено</span><span class="en">Confident</span>
+      <small><span class="ua">готовий захищати на співбесіді</span><span class="en">ready to defend in an interview</span></small></h3>
+    <ul class="chips solid">
+      <li>Kotlin</li><li>Android SDK</li><li>Foreground Services</li><li>Android Keystore</li>
+      <li>PackageInstaller</li><li>Gradle</li>
+      <li>Python</li><li>FastAPI</li><li>SQLAlchemy 2.0 (async)</li><li>Alembic</li>
+      <li>PostgreSQL</li><li>Redis</li><li>Pydantic</li><li>pytest</li>
+    </ul>
+  </div>
+
+  <div class="skillrow">
+    <h3><span class="ua">Мав досвід</span><span class="en">Working knowledge</span>
+      <small><span class="ua">використовував у проєктах</span><span class="en">used in projects</span></small></h3>
+    <ul class="chips">
+      <li>TypeScript</li><li>React 18</li><li>Vite</li><li>Leaflet</li>
+      <li>Docker Compose</li><li>nginx</li><li>TLS</li><li>Linux / VPS</li><li>GitHub Actions</li>
+    </ul>
+  </div>
+
+  <div class="skillrow">
+    <h3><span class="ua">Підходи</span><span class="en">Practices</span>
+      <small><span class="ua">що вмію проєктувати</span><span class="en">what I can design</span></small></h3>
+    <ul class="chips">
+      <li><span class="ua">REST + WebSocket API</span><span class="en">REST + WebSocket APIs</span></li>
+      <li><span class="ua">JWT, refresh у HttpOnly-cookie</span><span class="en">JWT, refresh in HttpOnly cookies</span></li>
+      <li>RBAC</li>
+      <li><span class="ua">Rate limiting та аудит</span><span class="en">Rate limiting &amp; audit log</span></li>
+      <li><span class="ua">Challenge–response на ключах P-256</span><span class="en">P-256 challenge–response auth</span></li>
+      <li><span class="ua">Офлайн-черги й ідемпотентність</span><span class="en">Offline queues &amp; idempotency</span></li>
+      <li><span class="ua">Міграції БД</span><span class="en">Database migrations</span></li>
+      <li><span class="ua">Технічна документація</span><span class="en">Technical documentation</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects">
+  <h2><span class="ua">Ключовий проєкт</span><span class="en">Flagship project</span></h2>
+
+  <article class="project">
+    <div class="project-head">
+      <h3><a href="https://github.com/Alesko125/fleet-mdm" target="_blank" rel="noopener">Fleet MDM</a></h3>
+    </div>
+    <p class="tagline">
+      <span class="ua">Self-hosted платформа керування Android-пристроями, які явно зареєстровані їхнім власником. Повністю на приватному VPS.</span>
+      <span class="en">Self-hosted management platform for Android devices explicitly enrolled by their own owner. Runs entirely on a private VPS.</span>
+    </p>
+
+    <div class="ghstats noprint" id="ghstats" hidden>
+      <span id="stat-stars" hidden>★ <b id="gh-stars"></b> <span class="ua">зірок</span><span class="en">stars</span></span>
+      <span id="stat-forks" hidden>⑂ <b id="gh-forks"></b> <span class="ua">форків</span><span class="en">forks</span></span>
+      <span id="stat-lang" hidden><span class="ua">мова</span><span class="en">language</span>: <b id="gh-lang"></b></span>
+      <span id="stat-push" hidden><span class="ua">останній пуш</span><span class="en">last push</span>: <b id="gh-push"></b></span>
+      <span id="stat-repos" hidden><span class="ua">публічних репозиторіїв</span><span class="en">public repos</span>: <b id="gh-repos"></b></span>
+    </div>
+
+    <ul class="feat">
+      <li><span class="ua"><b>Бекенд</b> на FastAPI: JWT із refresh у HttpOnly-cookie, RBAC, rate limiting, наскрізний аудит. 388 тестів проходять.</span>
+          <span class="en"><b>Backend</b> on FastAPI: JWT with refresh in HttpOnly cookies, RBAC, rate limiting, end-to-end audit log. 388 tests passing.</span></li>
+      <li><span class="ua"><b>Реєстрація пристроїв</b>: одноразові токени та challenge–response на ключах P-256, згенерованих в Android Keystore — приватний ключ не залишає пристрій.</span>
+          <span class="en"><b>Device enrollment</b>: one-time tokens plus challenge–response on P-256 keys generated inside Android Keystore — the private key never leaves the device.</span></li>
+      <li><span class="ua"><b>Командний канал</b>: черга команд, доставка через WebSocket, підтвердження, прогрес, результат і скасування.</span>
+          <span class="en"><b>Command channel</b>: command queue, WebSocket delivery, ack, progress, result and cancellation.</span></li>
+      <li><span class="ua"><b>Модулі</b>: репозиторій APK із власним парсером AndroidManifest і дедуплікацією за SHA-256, інвентар застосунків, геолокація з офлайн-чергою та картою, передача файлів із відновленням і checksum, телеметрія, моніторинг на 11 типів правил, віддалена підтримка через MediaProjection.</span>
+          <span class="en"><b>Modules</b>: APK repository with a custom AndroidManifest parser and SHA-256 deduplication, app inventory, geolocation with an offline queue and map, resumable file transfer with checksums, telemetry, monitoring across 11 rule types, remote support via MediaProjection.</span></li>
+      <li><span class="ua"><b>Android-агент</b> на Kotlin: foreground-сервіс, PackageInstaller, робота з дозволами, стійкість до обмежень фонової роботи в новіших Android.</span>
+          <span class="en"><b>Android agent</b> in Kotlin: foreground service, PackageInstaller, runtime permissions, resilient to background-execution limits in newer Android versions.</span></li>
+      <li><span class="ua"><b>Прозорість як вимога архітектури</b>: агент завжди видимий користувачу й показує, хто адміністратор і що саме передається. Прихованого стеження в системі немає за задумом.</span>
+          <span class="en"><b>Transparency as an architectural requirement</b>: the agent is always visible to the device user and shows who the administrator is and what exactly is transmitted. Covert surveillance is excluded by design.</span></li>
+      <li><span class="ua"><b>Розгортання й документація</b>: Docker Compose (PostgreSQL, Redis, API, фронтенд, nginx із TLS), CI та релізи на GitHub Actions, 14 документів з архітектури, БД, API, безпеки та розгортання.</span>
+          <span class="en"><b>Deployment &amp; docs</b>: Docker Compose (PostgreSQL, Redis, API, frontend, nginx with TLS), CI and releases on GitHub Actions, 14 documents covering architecture, database, API, security and deployment.</span></li>
+    </ul>
+
+    <ul class="stack">
+      <li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>PostgreSQL</li><li>Redis</li>
+      <li>Kotlin</li><li>Android</li><li>React</li><li>TypeScript</li><li>Docker</li><li>nginx</li><li>GitHub Actions</li>
+    </ul>
+  </article>
+</section>
+
+<section id="experience">
+  <h2><span class="ua">Досвід роботи</span><span class="en">Experience</span></h2>
+
+  <div class="job">
+    <div class="when">
+      <span class="ua">жовтень 2024 — дотепер</span><span class="en">October 2024 — present</span>
+    </div>
+    <div>
+      <h3><span class="ua">Технік з конфігурованих комп'ютерних систем</span><span class="en">Configured Computer Systems Technician</span></h3>
+      <p class="where"><span class="ua">«Основа», Чернігів · повна зайнятість</span><span class="en">Osnova, Chernihiv · full-time</span></p>
+      <ul>
+        <li><span class="ua">Налаштування й обслуговування комп'ютерних систем та мережевого обладнання, діагностика збоїв від фізичного рівня до конфігурації.</span>
+            <span class="en">Configuration and maintenance of computer systems and network equipment; fault diagnosis from the physical layer up to configuration.</span></li>
+        <li><span class="ua">Автоматизація рутинних перевірок і обробки даних скриптами на Python.</span>
+            <span class="en">Automation of routine checks and data processing with Python scripts.</span></li>
+      </ul>
+      <div class="sub">
+        <h4><span class="ua">Черговий інженер</span><span class="en">Duty Engineer</span></h4>
+        <p class="where"><span class="ua">вересень 2022 — жовтень 2024</span><span class="en">September 2022 — October 2024</span></p>
+        <ul>
+          <li><span class="ua">Цілодобовий контроль стану мережі, реагування на аварії, ескалація та ведення журналу інцидентів.</span>
+              <span class="en">Round-the-clock network monitoring, incident response, escalation and incident logging.</span></li>
+        </ul>
+      </div>
+      <div class="sub">
+        <h4><span class="ua">Монтажник мереж · технічна підтримка клієнтів</span><span class="en">Network Installer · Customer Technical Support</span></h4>
+        <p class="where"><span class="ua">березень 2019 — вересень 2022</span><span class="en">March 2019 — September 2022</span></p>
+        <ul>
+          <li><span class="ua">Монтаж і підключення абонентських ліній, налаштування обладнання в клієнтів.</span>
+              <span class="en">Installation and connection of subscriber lines, configuring equipment at customer sites.</span></li>
+          <li><span class="ua">Технічна підтримка користувачів: пояснення складних речей простою мовою — навичка, яка потім лягла в основу підходу до документації.</span>
+              <span class="en">User-facing technical support: explaining complex things in plain language — a habit that later shaped how I write documentation.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <h2><span class="ua">Освіта</span><span class="en">Education</span></h2>
+  <div class="job">
+    <div class="when"><span class="ua">—</span><span class="en">—</span></div>
+    <div>
+      <h3><span class="ua">Національний університет «Чернігівська політехніка»</span><span class="en">Chernihiv Polytechnic National University</span></h3>
+      <p class="where"><span class="ua">Чернігів, Україна</span><span class="en">Chernihiv, Ukraine</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="languages">
+  <h2><span class="ua">Мови та сильні сторони</span><span class="en">Languages &amp; strengths</span></h2>
+  <div class="cols">
+    <div>
+      <h3 style="font-size:14px;margin:0 0 12px"><span class="ua">Мови</span><span class="en">Languages</span></h3>
+      <ul class="plain">
+        <li><b><span class="ua">Українська</span><span class="en">Ukrainian</span></b> — <span class="m"><span class="ua">рідна</span><span class="en">native</span></span></li>
+        <li><b><span class="ua">Англійська</span><span class="en">English</span></b> — <span class="m">A2, <span class="ua">вільно читаю технічну документацію</span><span class="en">read technical documentation fluently</span></span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size:14px;margin:0 0 12px"><span class="ua">Сильні сторони</span><span class="en">Strengths</span></h3>
+      <ul class="plain">
+        <li><span class="ua">Доводжу задачу від ідеї до робочого релізу самостійно.</span><span class="en">I take a task from idea to a working release on my own.</span></li>
+        <li><span class="ua">Пишу документацію так, щоб її читали, а не терпіли.</span><span class="en">I write documentation people actually read.</span></li>
+        <li><span class="ua">Проєктую з оглядом на безпеку й приватність користувача.</span><span class="en">I design with user security and privacy in mind.</span></li>
+        <li><span class="ua">Сім років підтримки навчили пояснювати просто й не панікувати в аварії.</span><span class="en">Seven years in support taught me to explain simply and stay calm during outages.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="ua">Оновлено: серпень 2026 · Сторінка зібрана вручну, без фреймворків</span>
+  <span class="en">Updated: August 2026 · Hand-built page, no frameworks</span>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* ---- language ---- */
+  function setLang(lang) {
+    root.setAttribute('data-lang', lang);
+    root.setAttribute('lang', lang === 'en' ? 'en' : 'uk');
+    document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
+    });
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+  document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.setLang); });
+  });
+
+  /* ---- theme ---- */
+  var icon = document.getElementById('theme-icon');
+  function setTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    if (icon) icon.textContent = theme === 'dark' ? '☾' : '☀';
+    try { localStorage.setItem('theme', theme); } catch (e) {}
+  }
+  document.getElementById('theme-btn').addEventListener('click', function () {
+    setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* ---- restore preferences ---- */
+  var savedLang, savedTheme;
+  try { savedLang = localStorage.getItem('lang'); savedTheme = localStorage.getItem('theme'); } catch (e) {}
+  setLang(savedLang === 'en' || savedLang === 'ua' ? savedLang
+        : ((navigator.language || '').toLowerCase().indexOf('uk') === 0 ? 'ua' : 'en'));
+  setTheme(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme
+        : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+
+  /* ---- live GitHub stats ----
+     Each figure appears only if the API actually returned it: a private repo,
+     a rate limit or no network simply leaves that item — or the whole strip — hidden. */
+  var REPO = 'Alesko125/fleet-mdm', USER = 'Alesko125';
+  function stat(id, value) {
+    if (value === null || value === undefined || value === '') return false;
+    document.getElementById('gh-' + id).textContent = value;
+    document.getElementById('stat-' + id).hidden = false;
+    return true;
+  }
+  function json(url) {
+    return fetch(url).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  }
+  Promise.all([json('https://api.github.com/repos/' + REPO), json('https://api.github.com/users/' + USER)])
+    .then(function (res) {
+      var repo = res[0], user = res[1], shown = false;
+      if (repo) {
+        shown = stat('stars', repo.stargazers_count) || shown;
+        shown = stat('forks', repo.forks_count) || shown;
+        shown = stat('lang', repo.language) || shown;
+        shown = stat('push', repo.pushed_at && new Date(repo.pushed_at).toLocaleDateString(
+          root.getAttribute('data-lang') === 'en' ? 'en-GB' : 'uk-UA',
+          { year: 'numeric', month: 'short', day: 'numeric' })) || shown;
+      }
+      /* the repo count alone says nothing useful — only show it next to real repo data */
+      if (shown && user) stat('repos', user.public_repos);
+      if (shown) document.getElementById('ghstats').hidden = false;
+    });
+})();
+</script>
+</body>
+</html>
