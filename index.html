@@ -94,8 +94,13 @@ h2::before{content:"// "; color:var(--accent-2)}
 
 /* ---------- project ---------- */
 .project{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:22px; box-shadow:var(--shadow)}
+.project + .project{margin-top:18px}
 .project-head{display:flex; flex-wrap:wrap; gap:10px; align-items:baseline; justify-content:space-between; margin-bottom:6px}
 .project h3{margin:0; font-size:21px; letter-spacing:-.01em}
+.badge{
+  font-family:var(--mono); font-size:11.5px; color:var(--muted); background:var(--panel-2);
+  border:1px solid var(--line); border-radius:999px; padding:3px 10px; white-space:nowrap;
+}
 .project h3 a{color:var(--text)}
 .project h3 a:hover{color:var(--accent)}
 .tagline{color:var(--muted); margin:0 0 16px; font-size:15px}
@@ -205,8 +210,8 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
     <span class="en">Developer based in Chernihiv, Ukraine. Seven years of hands-on work with networks and technical support at the telecom company Osnova — real hardware, real outages, and users who do not speak the technical language. Alongside that I write code: from a Kotlin agent for Android to an async FastAPI backend.</span>
   </p>
   <p class="lead">
-    <span class="ua">Найкраще мене показує <a href="https://github.com/Alesko125/fleet-mdm" target="_blank" rel="noopener">Fleet&nbsp;MDM</a> — self-hosted платформа керування Android-пристроями, яку я спроєктував і реалізував повністю сам: бекенд, вебпанель, мобільний агент, інфраструктура та документація. Шукаю віддалену повну зайнятість у backend- або Android-розробці.</span>
-    <span class="en">The work that represents me best is <a href="https://github.com/Alesko125/fleet-mdm" target="_blank" rel="noopener">Fleet&nbsp;MDM</a> — a self-hosted Android device management platform I designed and built end to end: backend, web dashboard, mobile agent, infrastructure and documentation. Looking for a remote full-time backend or Android role.</span>
+    <span class="ua">Довожу продукт до живих користувачів, а не до теки з чернетками: застосунок обліку фінансів для ФОП із покупками через Google Play, застосунок Osnova&nbsp;TV із власним каналом оновлень і перевіркою APK за контрольною сумою, а також Fleet&nbsp;MDM — платформа керування Android-пристроями, де я сам зробив і бекенд, і панель, і агента, і розгортання. Шукаю віддалену повну зайнятість у backend- або Android-розробці.</span>
+    <span class="en">I ship products to real users rather than to a drafts folder: a finance app for sole proprietors with Google Play purchases, the Osnova&nbsp;TV app with its own update channel and checksum-verified APKs, and Fleet&nbsp;MDM — a device management platform where I built the backend, the dashboard, the agent and the deployment myself. Looking for a remote full-time backend or Android role.</span>
   </p>
 </section>
 
@@ -218,7 +223,8 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
       <small><span class="ua">готовий захищати на співбесіді</span><span class="en">ready to defend in an interview</span></small></h3>
     <ul class="chips solid">
       <li>Kotlin</li><li>Android SDK</li><li>Foreground Services</li><li>Android Keystore</li>
-      <li>PackageInstaller</li><li>Gradle</li>
+      <li>PackageInstaller</li><li>Gradle</li><li>Google Play Billing</li><li>Firebase Cloud Messaging</li>
+      <li>BiometricPrompt</li><li>AdMob</li>
       <li>Python</li><li>FastAPI</li><li>SQLAlchemy 2.0 (async)</li><li>Alembic</li>
       <li>PostgreSQL</li><li>Redis</li><li>Pydantic</li><li>pytest</li>
     </ul>
@@ -250,24 +256,17 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
 </section>
 
 <section id="projects">
-  <h2><span class="ua">Ключовий проєкт</span><span class="en">Flagship project</span></h2>
+  <h2><span class="ua">Проєкти</span><span class="en">Projects</span></h2>
 
   <article class="project">
     <div class="project-head">
-      <h3><a href="https://github.com/Alesko125/fleet-mdm" target="_blank" rel="noopener">Fleet MDM</a></h3>
+      <h3>Fleet MDM</h3>
+      <span class="badge"><span class="ua">приватний репозиторій · код показую за запитом</span><span class="en">private repository · code available on request</span></span>
     </div>
     <p class="tagline">
-      <span class="ua">Self-hosted платформа керування Android-пристроями, які явно зареєстровані їхнім власником. Повністю на приватному VPS.</span>
-      <span class="en">Self-hosted management platform for Android devices explicitly enrolled by their own owner. Runs entirely on a private VPS.</span>
+      <span class="ua">Self-hosted платформа керування Android-пристроями, які явно зареєстровані їхнім власником. Повністю на приватному VPS. Спроєктував і реалізував сам — бекенд, панель, агент, інфраструктуру.</span>
+      <span class="en">Self-hosted management platform for Android devices explicitly enrolled by their own owner, running entirely on a private VPS. Designed and built end to end — backend, dashboard, agent, infrastructure.</span>
     </p>
-
-    <div class="ghstats noprint" id="ghstats" hidden>
-      <span id="stat-stars" hidden>★ <b id="gh-stars"></b> <span class="ua">зірок</span><span class="en">stars</span></span>
-      <span id="stat-forks" hidden>⑂ <b id="gh-forks"></b> <span class="ua">форків</span><span class="en">forks</span></span>
-      <span id="stat-lang" hidden><span class="ua">мова</span><span class="en">language</span>: <b id="gh-lang"></b></span>
-      <span id="stat-push" hidden><span class="ua">останній пуш</span><span class="en">last push</span>: <b id="gh-push"></b></span>
-      <span id="stat-repos" hidden><span class="ua">публічних репозиторіїв</span><span class="en">public repos</span>: <b id="gh-repos"></b></span>
-    </div>
 
     <ul class="feat">
       <li><span class="ua"><b>Бекенд</b> на FastAPI: JWT із refresh у HttpOnly-cookie, RBAC, rate limiting, наскрізний аудит. 388 тестів проходять.</span>
@@ -289,6 +288,64 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
     <ul class="stack">
       <li>Python</li><li>FastAPI</li><li>SQLAlchemy</li><li>PostgreSQL</li><li>Redis</li>
       <li>Kotlin</li><li>Android</li><li>React</li><li>TypeScript</li><li>Docker</li><li>nginx</li><li>GitHub Actions</li>
+    </ul>
+  </article>
+
+  <article class="project">
+    <div class="project-head">
+      <h3><span class="ua">ФОП Фінанси</span><span class="en">FOP Finance</span></h3>
+      <span class="badge"><span class="ua">Android · застосунок у продакшені</span><span class="en">Android · shipped app</span></span>
+    </div>
+    <p class="tagline">
+      <span class="ua">Застосунок обліку фінансів для українських ФОП: доходи й витрати, рахунки, контрагенти, системи оподаткування та ставки.</span>
+      <span class="en">Personal finance app for Ukrainian sole proprietors: income and expenses, accounts, counterparties, tax regimes and rates.</span>
+    </p>
+    <ul class="feat">
+      <li><span class="ua"><b>Local-first за задумом</b>: усі фінансові записи лежать у базі на пристрої й нікуди не передаються. Немає сервера — немає й витоку.</span>
+          <span class="en"><b>Local-first by design</b>: every financial record stays in an on-device database and never leaves it. No server means nothing to leak.</span></li>
+      <li><span class="ua"><b>Захист входу</b>: біометрія та код доступу, який зберігається лише як незворотний хеш.</span>
+          <span class="en"><b>App lock</b>: biometrics plus an access code stored only as an irreversible hash.</span></li>
+      <li><span class="ua"><b>Інтеграції</b>: курс валют із відкритого API Національного банку України на вказану дату; сповіщення-нагадування про строки сплати податків.</span>
+          <span class="en"><b>Integrations</b>: currency rates from the National Bank of Ukraine open API for a given date; notification reminders for tax deadlines.</span></li>
+      <li><span class="ua"><b>Монетизація</b>: Google Play Billing для Pro-версії та банер AdMob у безкоштовній, із запитом згоди для користувачів ЄЕЗ.</span>
+          <span class="en"><b>Monetisation</b>: Google Play Billing for the Pro tier and an AdMob banner in the free one, with a consent prompt for EEA users.</span></li>
+      <li><span class="ua"><b>Юридична частина</b>: <a href="https://alesko125.github.io/fop-finance-privacy/" target="_blank" rel="noopener">політика конфіденційності</a> написана й опублікована мною — з описом кожного дозволу та шляху даних.</span>
+          <span class="en"><b>Compliance</b>: I wrote and published the <a href="https://alesko125.github.io/fop-finance-privacy/" target="_blank" rel="noopener">privacy policy</a> myself, documenting every permission and data path.</span></li>
+    </ul>
+    <ul class="stack">
+      <li>Kotlin</li><li>Android</li><li>Google Play Billing</li><li>AdMob</li>
+      <li>BiometricPrompt</li><li>REST</li>
+    </ul>
+  </article>
+
+  <article class="project">
+    <div class="project-head">
+      <h3>Osnova TV</h3>
+      <span class="badge"><span class="ua">Android · релізи публічні</span><span class="en">Android · public releases</span></span>
+    </div>
+    <p class="tagline">
+      <span class="ua">Android-застосунок із власним каналом оновлень замість магазину застосунків.</span>
+      <span class="en">Android app with its own update channel instead of an app store.</span>
+    </p>
+
+    <div class="ghstats noprint" id="ghstats" hidden>
+      <span id="stat-tag" hidden><span class="ua">поточний реліз</span><span class="en">current release</span>: <b id="gh-tag"></b></span>
+      <span id="stat-date" hidden><span class="ua">опубліковано</span><span class="en">published</span>: <b id="gh-date"></b></span>
+      <span id="stat-count" hidden><b id="gh-count"></b></span>
+    </div>
+
+    <ul class="feat">
+      <li><span class="ua"><b>Механізм оновлення власноруч</b>: маніфест <code>version.json</code> із кодом і назвою версії, посиланням на APK, контрольною сумою SHA-256 та прапорцем обов'язкового оновлення.</span>
+          <span class="en"><b>Hand-rolled update mechanism</b>: a <code>version.json</code> manifest carrying version code and name, APK link, SHA-256 checksum and a mandatory-update flag.</span></li>
+      <li><span class="ua"><b>Перевірка цілісності</b>: збірка звіряється з контрольною сумою до встановлення — підміна APK на шляху не пройде.</span>
+          <span class="en"><b>Integrity check</b>: the build is verified against its checksum before installation, so a swapped APK does not get through.</span></li>
+      <li><span class="ua"><b>Push-сповіщення</b> через Firebase Cloud Messaging; вихід із застосунку відв'язує пристрій від розсилки.</span>
+          <span class="en"><b>Push notifications</b> via Firebase Cloud Messaging; signing out unsubscribes the device.</span></li>
+      <li><span class="ua"><b>Регулярні релізи</b>: чотири версії від 2.0 до 2.3 із нотатками до кожної — <a href="https://github.com/Alesko125/Osnova-releases/releases" target="_blank" rel="noopener">канал збірок</a> відкритий.</span>
+          <span class="en"><b>Steady releases</b>: four versions from 2.0 to 2.3, each with release notes — the <a href="https://github.com/Alesko125/Osnova-releases/releases" target="_blank" rel="noopener">build channel</a> is public.</span></li>
+    </ul>
+    <ul class="stack">
+      <li>Kotlin</li><li>Android</li><li>Firebase Cloud Messaging</li><li>PackageInstaller</li><li>SHA-256</li>
     </ul>
   </article>
 </section>
@@ -334,10 +391,14 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
 <section id="education">
   <h2><span class="ua">Освіта</span><span class="en">Education</span></h2>
   <div class="job">
-    <div class="when"><span class="ua">—</span><span class="en">—</span></div>
+    <div class="when"><span class="ua">Чернігів</span><span class="en">Chernihiv</span></div>
     <div>
       <h3><span class="ua">Національний університет «Чернігівська політехніка»</span><span class="en">Chernihiv Polytechnic National University</span></h3>
-      <p class="where"><span class="ua">Чернігів, Україна</span><span class="en">Chernihiv, Ukraine</span></p>
+      <p class="where"><span class="ua">Радіоелектронні апарати</span><span class="en">Radioelectronic Devices</span></p>
+      <ul>
+        <li><span class="ua">Схемотехніка, електроніка та вимірювальна техніка — база, через яку мережеве обладнання й мобільні пристрої читаються до рівня заліза, а не лише API.</span>
+            <span class="en">Circuit design, electronics and measurement — the grounding that lets me read network hardware and mobile devices down to the metal, not just the API surface.</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -374,6 +435,8 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
 <script>
 (function () {
   var root = document.documentElement;
+  /* replaced once release data arrives, so switching language re-formats it */
+  var renderStats = function () {};
 
   /* ---- language ---- */
   function setLang(lang) {
@@ -383,6 +446,7 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
       b.setAttribute('aria-pressed', String(b.dataset.setLang === lang));
     });
     try { localStorage.setItem('lang', lang); } catch (e) {}
+    renderStats();
   }
   document.querySelectorAll('[data-set-lang]').forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.dataset.setLang); });
@@ -407,34 +471,40 @@ footer{padding:30px 0 0; color:var(--muted); font-size:13px; font-family:var(--m
   setTheme(savedTheme === 'light' || savedTheme === 'dark' ? savedTheme
         : (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
 
-  /* ---- live GitHub stats ----
-     Each figure appears only if the API actually returned it: a private repo,
-     a rate limit or no network simply leaves that item — or the whole strip — hidden. */
-  var REPO = 'Alesko125/fleet-mdm', USER = 'Alesko125';
+  /* ---- live release data for Osnova TV ----
+     Each figure appears only if the API actually returned it; a rate limit or no
+     network simply leaves that item — or the whole strip — hidden. */
   function stat(id, value) {
     if (value === null || value === undefined || value === '') return false;
     document.getElementById('gh-' + id).textContent = value;
     document.getElementById('stat-' + id).hidden = false;
     return true;
   }
-  function json(url) {
-    return fetch(url).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+  /* Ukrainian needs three plural forms, English two: 1 реліз / 2 релізи / 5 релізів */
+  function releaseCount(n) {
+    if (root.getAttribute('data-lang') === 'en') return n + (n === 1 ? ' release' : ' releases');
+    var mod10 = n % 10, mod100 = n % 100, word;
+    if (mod10 === 1 && mod100 !== 11) word = 'реліз';
+    else if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) word = 'релізи';
+    else word = 'релізів';
+    return n + ' ' + word;
   }
-  Promise.all([json('https://api.github.com/repos/' + REPO), json('https://api.github.com/users/' + USER)])
-    .then(function (res) {
-      var repo = res[0], user = res[1], shown = false;
-      if (repo) {
-        shown = stat('stars', repo.stargazers_count) || shown;
-        shown = stat('forks', repo.forks_count) || shown;
-        shown = stat('lang', repo.language) || shown;
-        shown = stat('push', repo.pushed_at && new Date(repo.pushed_at).toLocaleDateString(
+  fetch('https://api.github.com/repos/Alesko125/Osnova-releases/releases')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (releases) {
+      if (!Array.isArray(releases) || !releases.length) return;
+      renderStats = function () {
+        var latest = releases[0], shown = false;
+        shown = stat('tag', latest.tag_name) || shown;
+        shown = stat('date', latest.published_at && new Date(latest.published_at).toLocaleDateString(
           root.getAttribute('data-lang') === 'en' ? 'en-GB' : 'uk-UA',
           { year: 'numeric', month: 'short', day: 'numeric' })) || shown;
-      }
-      /* the repo count alone says nothing useful — only show it next to real repo data */
-      if (shown && user) stat('repos', user.public_repos);
-      if (shown) document.getElementById('ghstats').hidden = false;
-    });
+        shown = stat('count', releaseCount(releases.length)) || shown;
+        if (shown) document.getElementById('ghstats').hidden = false;
+      };
+      renderStats();
+    })
+    .catch(function () { /* strip stays hidden */ });
 })();
 </script>
 </body>
